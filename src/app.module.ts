@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import {ConfigModule}from'@nestjs/config';
 import {TypeOrmModule} from '@nestjs/typeorm';
 import { UserModule } from './users/users.module';
+import { TodoModule } from './todos/Todo.module';
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
@@ -18,6 +19,7 @@ import { UserModule } from './users/users.module';
       synchronize: true, 
     }),
     UserModule,
+    TodoModule
     
   ],
   controllers: [AppController],
