@@ -1,6 +1,7 @@
 import { UserEntity } from 'src/users/model/user.entity';
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
 
+
 @Entity()
 export class TodoEntity {
     [x: string]: any;
@@ -15,6 +16,9 @@ export class TodoEntity {
 
   @Column()
   completed: boolean;
+  
+  
+public laserMode: boolean;
 
   //many tods can belongs to single user
 

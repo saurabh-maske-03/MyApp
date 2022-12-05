@@ -70,8 +70,11 @@ export class UserService {
     return from(this.userRepository.find());
   }
 
-  findOne(id: number): Observable<UserI> {
-    return from(this.userRepository.findOne({where:{id:id} }));
+  findOne(id: number) {
+    return from(this.userRepository.findOneOrFail({where:{id:id} }));
+  }
+  findUser(id:number){
+    return this.userRepository.findOneOrFail({where:{id:id}})
   }
 
   private findUserByEmail(email: string): Observable<UserI> {

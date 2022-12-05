@@ -22,10 +22,10 @@ export class TodoController{
         return this.todoService.findAllCompletedTodo(Number(userId))
     }
 
-    // @Patch(':id')
-    // update(@Param('id') id:number){
-    //     return this.todoService.updateTodo(Number(id))
-    // }
+    @Patch(':id')
+    update(@Param('id') id:number){
+        return this.todoService.updateTodo(Number(id))
+    }
 
     @Delete(':id')
     remove(@Param('id') id:string){

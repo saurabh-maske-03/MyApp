@@ -21,7 +21,7 @@ export class TodoService {
     todo.title = createTodoDto.title;
     todo.date = new Date().toLocaleString();
     todo.completed = false;
-    todo.users = await this.userService.findOne(userId);
+    todo.user = await this.userService.findUser(userId);
     return this.todoRepository.save(todo);
   }
 
@@ -45,9 +45,9 @@ export class TodoService {
 
   // mark todo as completed basedon todo ids
 
-  // updateTodo(todoId: number) {
-  //   return this.todoRepository.update(todoId, { completed: true});
-  // }
+  updateTodo(todoId: number) {
+    return this.todoRepository.save({id:todoId,completed: true});
+  }
 
   // delete todo basedon todo id
 
