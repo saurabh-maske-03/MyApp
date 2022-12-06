@@ -1,7 +1,7 @@
 import { Body, Controller, Get, HttpCode, Post, Req, UseGuards } from '@nestjs/common';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
+import { JwtAuthGuard } from '../../auth/guards/jwt-auth.guard';
 import { CreateUserDto } from '../model/dto/CreateUser.dto';
 import { LoginUserDto } from '../model/dto/LoginUser.dto';
 import { UserI } from '../model/user.interface';
@@ -12,13 +12,12 @@ export class UserController {
 
   constructor(private userService: UserService) { }
 
-  // Rest Call: POST http://localhost:8080/api/users/
+  
   @Post()
   create(@Body() createdUserDto: CreateUserDto): Observable<UserI> {
     return this.userService.create(createdUserDto);
   }
 
-  // Rest Call: POST http://localhost:8080/api/users/login
   @Post('login')
   @HttpCode(200)
   login(@Body() loginUserDto: LoginUserDto): Observable<Object> {
@@ -32,12 +31,13 @@ export class UserController {
       })
     );
   }
-
-  // Rest Call: GET http://localhost:8080/api/users/ 
-  // Requires Valid JWT from Login Request
   @UseGuards(JwtAuthGuard)
   @Get()
   findAll(@Req() request): Observable<UserI[]> {
     return this.userService.findAll();
+  }
+  @Get()
+  getAllUsers(){
+    return this.userService.getAllUsers()
   }
 }
