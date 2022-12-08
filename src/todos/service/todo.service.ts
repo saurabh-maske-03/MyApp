@@ -4,7 +4,7 @@ import { Repository } from 'typeorm';
 import { TodoEntity } from '../model/todo.entity';
 import { AuthService } from '../../auth/services/auth/auth.service';
 import { CreateTodoDto } from '../model/dto/createTodo.dto';
-import { UserService } from 'src/users/service/user.service';
+import { UserService } from '../../users/service/user.service';
 
 @Injectable()
 export class TodoService {
